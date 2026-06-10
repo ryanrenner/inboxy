@@ -20,8 +20,18 @@
     },
     "permissions": [
         "storage",
-        "declarativeContent"
+        "declarativeContent",
+        "identity"
     ],
+    "host_permissions": [
+        "https://www.googleapis.com/*"
+    ],
+    "oauth2": {
+        "client_id": "YOUR_OAUTH_CLIENT_ID.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/gmail.readonly"
+        ]
+    },
     "action": {
         "default_icon": {
             "16": "icons/inboxy.png",

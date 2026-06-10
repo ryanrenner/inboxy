@@ -30,6 +30,8 @@ import MessageListWatcher from './handlers/MessageListWatcher';
 import StarHandler from './handlers/StarHandler';
 import ThemeChangeHandler from './handlers/ThemeChangeHandler';
 
+import SectionsManager from './sections/SectionsManager';
+
 import { 
     InboxyClasses,
     Selectors,
@@ -73,7 +75,8 @@ const handleGmailRerender = () => {
         const reopenRecentBundle = !isFreshPage;
         bundler.bundleMessages(reopenRecentBundle);
         starHandler.scrollIfNecessary();
-        
+        sectionsManager.render();
+
         isFreshPage = false;
     }
 };
@@ -86,6 +89,7 @@ const selectiveBundling = new SelectiveBundling();
 const bundler = new Bundler(bundleToggler, bundledMail, messageListWatcher, selectiveBundling);
 const starHandler = new StarHandler(bundledMail, selectiveBundling);
 const dateGrouper = new DateGrouper();
+const sectionsManager = new SectionsManager();
 
 // 
 // Observers for handling navigation, rerenders by Gmail, etc.
@@ -184,6 +188,7 @@ function tryBundling(i, bundleCurrentPage) {
             logDebugMessage(JSON.stringify(debugInfo));
             addPinnedToggle();
             startObservers();
+            sectionsManager.render();
         }
     }
 }
