@@ -27,3 +27,23 @@ if (chrome.declarativeContent) {
     });
 }
 
+// Handle auth token requests from content scripts
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'GET_AUTH_TOKEN') {
+        chrome.identity.getAuthToken({ interactive: true }, token => {
+            if (chrome.runtime.lastError) {
+                sendResponse({ error: chrome.runtime.lastError.message });
+            } else {
+                sendResponse({ token });
+            }
+        });
+        return true; // keep message channel open for async response
+    }
+
+    if (message.type === 'REMOVE_AUTH_TOKEN') {
+        chrome.identity.removeCachedAuthToken({ token: message.token }, () => {
+            sendResponse({});
+        });
+        return true;
+    }
+});

@@ -15,17 +15,25 @@ function setCached(key, data) {
     cache.set(key, { data, timestamp: Date.now() });
 }
 
-async function getAuthToken(interactive = true) {
+async function getAuthToken() {
     return new Promise((resolve, reject) => {
-        chrome.identity.getAuthToken({ interactive }, token => {
+        chrome.runtime.sendMessage({ type: 'GET_AUTH_TOKEN' }, response => {
             if (chrome.runtime.lastError) {
                 reject(new Error(chrome.runtime.lastError.message));
-            } else if (!token) {
+            } else if (response?.error) {
+                reject(new Error(response.error));
+            } else if (!response?.token) {
                 reject(new Error('No auth token returned'));
             } else {
-                resolve(token);
+                resolve(response.token);
             }
         });
+    });
+}
+
+async function removeAuthToken(token) {
+    return new Promise(resolve => {
+        chrome.runtime.sendMessage({ type: 'REMOVE_AUTH_TOKEN', token }, () => resolve());
     });
 }
 
@@ -34,8 +42,7 @@ async function apiFetch(url, token) {
         headers: { Authorization: `Bearer ${token}` },
     });
     if (resp.status === 401) {
-        // Remove stale token so next call re-prompts
-        await new Promise(resolve => chrome.identity.removeCachedAuthToken({ token }, resolve));
+        await removeAuthToken(token);
         throw new Error('Auth token expired — please reload Gmail');
     }
     if (!resp.ok) {
