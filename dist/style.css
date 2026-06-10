@@ -585,3 +585,206 @@ html.inboxy.show-pinned-toggle.simpl.hideSearch.appSwitcher #gb form {
     display: block;
     visibility: hidden;
 }
+/**
+ * Custom stacked sections
+ */
+
+#inboxy-sections-container {
+    margin: 4px 0 8px 0;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.inboxy-section {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin: 8px 24px;
+    overflow: hidden;
+}
+
+.inboxy-section-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    color: #444;
+    gap: 6px;
+}
+
+.inboxy-section-header:hover {
+    background: #f1f3f4;
+}
+
+.inboxy-section-toggle {
+    font-size: 11px;
+    color: #666;
+    flex-shrink: 0;
+    width: 12px;
+}
+
+.inboxy-section-name {
+    flex: 1;
+    font-size: 13px;
+}
+
+.inboxy-section-count {
+    background: #1a73e8;
+    color: #fff;
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.inboxy-section-refresh {
+    cursor: pointer;
+    color: #888;
+    font-size: 16px;
+    line-height: 1;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.inboxy-section-refresh:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.inboxy-thread-row {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-bottom: 1px solid #f1f3f4;
+    cursor: pointer;
+    color: #606060;
+    font-weight: 400;
+    gap: 8px;
+    min-height: 36px;
+}
+
+.inboxy-thread-row:last-child {
+    border-bottom: none;
+}
+
+.inboxy-thread-row:hover {
+    background: #f5f5f5;
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0;
+}
+
+.inboxy-thread-row.inboxy-unread {
+    font-weight: 600;
+    color: #202124;
+}
+
+.inboxy-thread-star {
+    flex-shrink: 0;
+    width: 18px;
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.inboxy-thread-star:hover {
+    color: #f4b400;
+}
+
+.inboxy-thread-sender {
+    flex-shrink: 0;
+    width: 156px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.inboxy-thread-subject {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.inboxy-snippet {
+    color: #999;
+    font-weight: 400;
+}
+
+.inboxy-unread .inboxy-snippet {
+    color: #777;
+}
+
+.inboxy-thread-date {
+    flex-shrink: 0;
+    width: 68px;
+    text-align: right;
+    color: #777;
+    font-size: 12px;
+}
+
+.inboxy-unread .inboxy-thread-date {
+    font-weight: 600;
+    color: #202124;
+}
+
+.inboxy-section-status {
+    padding: 10px 12px;
+    color: #888;
+    font-style: italic;
+    font-size: 13px;
+    text-align: center;
+}
+
+.inboxy-section-error {
+    color: #c62828;
+}
+
+/* Dark theme support */
+html.inboxy.messages-dark-theme .inboxy-section {
+    border-color: #3c3c3c;
+}
+
+html.inboxy.messages-dark-theme .inboxy-section-header {
+    background: #2d2d2d;
+    border-bottom-color: #3c3c3c;
+    color: #e8eaed;
+}
+
+html.inboxy.messages-dark-theme .inboxy-section-header:hover {
+    background: #3c3c3c;
+}
+
+html.inboxy.messages-dark-theme .inboxy-section-count {
+    background: #4a90d9;
+}
+
+html.inboxy.messages-dark-theme .inboxy-thread-row {
+    border-bottom-color: #3c3c3c;
+    color: #9aa0a6;
+}
+
+html.inboxy.messages-dark-theme .inboxy-thread-row:hover {
+    background: #3c3c3c;
+}
+
+html.inboxy.messages-dark-theme .inboxy-thread-row.inboxy-unread {
+    color: #e8eaed;
+}
+
+html.inboxy.messages-dark-theme .inboxy-thread-date {
+    color: #9aa0a6;
+}
+
+html.inboxy.messages-dark-theme .inboxy-unread .inboxy-thread-date {
+    color: #e8eaed;
+}

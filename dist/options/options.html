@@ -31,6 +31,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         <ul class="nav-links">
             <li><a href="#get-started">Get started</a></li>
             <li><a href="#">Options</a></li>
+            <li><a href="#sections">Sections</a></li>
             <li><a href="#help">Help</a></li>
         </ul>
     </nav>
@@ -240,6 +241,34 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
             <button id="save-button" class="save-button">
                 <span class="save-text">Save</span>
+                <span class="saved-text">Saved <img src="assets/small-check.svg"></span>
+            </button>
+        </div>
+
+        <div class="tab sections-tab">
+            <h1>Custom Sections</h1>
+            <p>
+                Custom sections appear below your Gmail inbox, populated by any Gmail search query
+                (e.g. <code>label:review</code>, <code>is:starred</code>, <code>from:boss@company.com</code>).
+            </p>
+
+            <div class="sections-setup-notice" id="sections-setup-notice" style="display:none">
+                <strong>Setup required:</strong> Custom sections use the Gmail API and need a Google OAuth
+                client ID. See the
+                <a href="https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow"
+                   target="_blank">Google OAuth docs</a>
+                and set your client ID in <code>dist/manifest.json</code> under <code>"oauth2"</code>.
+                Once set, reload the extension and Gmail will prompt you to authorize on first use.
+            </div>
+
+            <div id="sections-list"></div>
+
+            <button id="add-section-btn" class="save-button" style="margin-top:16px">
+                + Add section
+            </button>
+
+            <button id="save-sections-btn" class="save-button" style="margin-left:12px">
+                <span class="save-text">Save sections</span>
                 <span class="saved-text">Saved <img src="assets/small-check.svg"></span>
             </button>
         </div>
